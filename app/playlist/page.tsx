@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = (props) => {
+const page = (props: any) => {
   return <div>PlayList {props.searchParams.list}</div>;
 };
 
