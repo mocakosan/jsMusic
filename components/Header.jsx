@@ -19,6 +19,7 @@ import {
 import Logo from "./elements/Logo";
 import Navigator from "./elements/Navigator";
 import { cn } from "@/lib/utils";
+import useUIState from "@/hooks/useUIState";
 
 const HeaderDrawer = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +44,7 @@ const HeaderDrawer = ({ children }) => {
 };
 
 const Header = ({ children }) => {
+  const { headerImageSrc } = useUIState();
   const [isScrolled, setIsScrolled] = useState(false);
   const headRef = useRef();
   useEffect(() => {
@@ -59,7 +61,7 @@ const Header = ({ children }) => {
     <header ref={headRef} className="relative overflow-y-auto w-full h-full">
       <section className="absolute top-0 w-full">
         <div className="relative h-[400px] w-full">
-          <Image fill src={record} className="object-cover" />
+          <Image fill src={headerImageSrc || record} className="object-cover" />
           <div className="absolute h-[400px] top-0 bg-black opacity-40 w-full"></div>
           <div className="absolute h-[400px] top-0 bg-gradient-to-t from-black w-full"></div>
         </div>
