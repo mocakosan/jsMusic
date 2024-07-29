@@ -23,7 +23,7 @@ const PlayListCarousel: React.FC<PlayListCarouselProps> = ({
   playlistArray,
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full max-w-[1500px]">
       <Carousel>
         <div className="flex flex-row justify-between items-end my-2">
           <article className="flex flex-row gap-3">
