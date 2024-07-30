@@ -1,11 +1,20 @@
+"use client";
 import React from "react";
 import Logo from "./elements/Logo";
 import Navigator from "./elements/Navigator";
+import usePlayerState from "@/hooks/usePlayerState";
+import { cn } from "@/lib/utils";
 
-const SideBar = ({ children }) => {
+const Sidebar = ({ children }) => {
+  const { isVisiblePlayer } = usePlayerState();
   return (
-    <div className="flex flex-row h-full">
-      <nav className="hidden lg:block w-[240px] border-r-[1px] border-neutral-600">
+    <div
+      className={cn(
+        "flex flex-row h-full ",
+        isVisiblePlayer && "h-[calc(100vh-72px)]"
+      )}
+    >
+      <nav className="hidden lg:block w-[240px] border-r-[1px] border-neutral-600 ">
         <div className="p-[24px]">
           <Logo />
         </div>
@@ -13,9 +22,9 @@ const SideBar = ({ children }) => {
           <Navigator />
         </div>
       </nav>
-      <div className="w-full lg:w-[calc(100%-240px)]">{children}</div>
+      <div className="w-full lg:w-[calc(100%-240px)] ">{children}</div>
     </div>
   );
 };
 
-export default SideBar;
+export default Sidebar;
